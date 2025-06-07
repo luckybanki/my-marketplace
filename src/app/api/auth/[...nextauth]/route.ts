@@ -9,10 +9,10 @@ const handler = NextAuth({
         username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" }
       },
-      async authorize(credentials) {
+      async authorize(credentials, req) {
         // For now, accept any username/password (for testing)
         if (credentials?.username && credentials?.password) {
-          return { id: 1, name: credentials.username };
+          return { id: "1", name: credentials.username }; // id must be a string!
         }
         return null;
       }
